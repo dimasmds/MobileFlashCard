@@ -20,7 +20,7 @@ class HomeScreen extends Component {
             }
 
             return <MaterialCommunityIcons name={iconName} size={size}
-                                           color={color}/>;
+              color={color}/>;
           },
         })}
         tabBarOptions={{

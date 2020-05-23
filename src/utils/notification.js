@@ -40,7 +40,7 @@ function createChannel() {
 export function setLocalNotification() {
   AsyncStorage.getItem(NOTIFICATION_KEY)
     .then(JSON.parse)
-    .then(data => {
+    .then((data) => {
       if (data === null) {
         Permissions.askAsync(Permissions.NOTIFICATIONS).then(({status}) => {
           if (status === 'granted') {
@@ -62,9 +62,6 @@ export function setLocalNotification() {
                 );
 
                 AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true));
-              })
-              .catch(err => {
-                console.log('err', err);
               });
           }
         });

@@ -3,8 +3,7 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import Quiz from '../pures/Quiz';
 import {
   clearLocalNotification,
-  clearNotification, setLocalNotification,
-  setNotification,
+  setLocalNotification,
 } from '../../utils/notification';
 
 
@@ -131,7 +130,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     padding: 32,
     alignItems: 'stretch',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
 });
 

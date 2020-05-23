@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Button, TextInput} from 'react-native';
+import {View, Button, TextInput} from 'react-native';
 import {connect} from 'react-redux';
 import {handleAddCard} from '../../redux/actions/decks';
 

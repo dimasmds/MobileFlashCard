@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput, Button} from 'react-native';
 import {connect} from 'react-redux';
-import {_addDeck, handleAddDeck} from '../../redux/actions/decks';
+import {handleAddDeck} from '../../redux/actions/decks';
 
 class AddDeckFragment extends Component {
   state = {
@@ -9,7 +9,7 @@ class AddDeckFragment extends Component {
   };
 
   onDeckChange = text => {
-    this.setState(prevState => ({
+    this.setState(() => ({
       name: text,
     }));
   };

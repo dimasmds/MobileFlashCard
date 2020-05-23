@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Button, FlatList, StyleSheet} from 'react-native';
+import {View, FlatList, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import {handleInitialData} from '../../redux/actions/decks';
 import Deck from '../pures/Deck';
