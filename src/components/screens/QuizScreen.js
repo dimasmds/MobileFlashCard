@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import Quiz from '../pures/Quiz';
-import {clearNotification, setNotification} from '../../utils/notification';
-
+import {
+  clearLocalNotification,
+  clearNotification, setLocalNotification,
+  setNotification,
+} from '../../utils/notification';
 
 
 class QuizScreen extends Component {
@@ -43,7 +46,7 @@ class QuizScreen extends Component {
   };
 
   componentDidMount() {
-    clearNotification().then(setNotification);
+    clearLocalNotification().then(setLocalNotification);
   }
 
   render() {
@@ -64,9 +67,19 @@ class QuizScreen extends Component {
     if (this.state.questionNumber > deck.questions.length) {
       return (
         <View style={styles.resultContainer}>
-          <Text>Finish!</Text>
-          <View>
-            <Button title="Reset" onPress={this.onResetQuestion}/>
+          <View style={styles.resultStatistic}>
+            <Text style={{fontSize: 24, padding: 8}}>Quiz Finished</Text>
+            <Text style={{fontSize: 14, padding: 8, marginBottom: 16}}>This is
+              the result:</Text>
+            <Text
+              style={styles.scoreText}>{`Correct Answer: ${this.state.correctAnswer}`}</Text>
+            <Text
+              style={styles.scoreText}>{`Wrong Answer: ${this.state.wrongAnswer}`}</Text>
+            <Text
+              style={styles.scoreText}>{`Total Score: ${Math.floor((this.state.correctAnswer / deck.questions.length) * 100)}%`}</Text>
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button title="Do it again" onPress={this.onResetQuestion}/>
             <Button title="Back to Deck" onPress={this.onGoBack}/>
           </View>
         </View>
@@ -100,7 +113,26 @@ const styles = StyleSheet.create({
     padding: 16,
     alignItems: 'stretch',
   },
-  resultContainer: {},
+  resultContainer: {
+    flex: 1,
+  },
+  resultStatistic: {
+    flex: 1,
+    flexGrow: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  scoreText: {
+    fontSize: 18,
+    padding: 8,
+  },
+  buttonContainer: {
+    flex: 1,
+    flexGrow: 1,
+    padding: 32,
+    alignItems: 'stretch',
+    justifyContent: 'space-around'
+  },
 });
 
 export default QuizScreen;

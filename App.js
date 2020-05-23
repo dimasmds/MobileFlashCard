@@ -10,41 +10,41 @@ import HomeScreen from './src/components/screens/HomeScreen';
 import DeckScreen from './src/components/screens/DeckScreen';
 import QuizScreen from './src/components/screens/QuizScreen';
 import AddCardScreen from './src/components/screens/AddCardScreen';
-import {setNotification} from './src/utils/notification';
+import {setLocalNotification} from './src/utils/notification';
 
 const store = createStore(reducer, middlewares);
 const {Navigator, Screen} = createStackNavigator();
 
 export default class App extends Component {
-    componentDidMount() {
-        setNotification();
-    }
+  componentDidMount() {
+    setLocalNotification();
+  }
 
-    render() {
-        return (
-            <Provider store={store}>
-                <NavigationContainer>
-                    <Navigator>
-                        <Screen name={'Home'} component={HomeScreen}
-                                options={{title: 'Mobile Flashcards'}}/>
-                        <Screen name={'Deck'} component={DeckScreen}
-                                options={({route}) => ({title: route.params.itemID})}/>
-                        <Screen name={'AddCard'} component={AddCardScreen}
-                                options={({route}) => ({title: `Add Card to ${route.params.deck.title}`})}/>
-                        <Screen name={'Quiz'} component={QuizScreen}
-                                options={({route}) => ({title: `${route.params.deck.title} Quiz`})}/>
-                    </Navigator>
-                </NavigationContainer>
-            </Provider>
-        );
-    }
+  render() {
+    return (
+      <Provider store={store}>
+        <NavigationContainer>
+          <Navigator>
+            <Screen name={'Home'} component={HomeScreen}
+                    options={{title: 'Mobile Flashcards'}}/>
+            <Screen name={'Deck'} component={DeckScreen}
+                    options={({route}) => ({title: route.params.itemID})}/>
+            <Screen name={'AddCard'} component={AddCardScreen}
+                    options={({route}) => ({title: `Add Card to ${route.params.deck.title}`})}/>
+            <Screen name={'Quiz'} component={QuizScreen}
+                    options={({route}) => ({title: `${route.params.deck.title} Quiz`})}/>
+          </Navigator>
+        </NavigationContainer>
+      </Provider>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
